@@ -1,12 +1,15 @@
-import { FaCartPlus } from "react-icons/fa";
+import { Badge } from "@mui/material";
+import { Link } from "react-router-dom";
+import { BsFillCartCheckFill } from "react-icons/bs";
 
-function CartWidget() {
+const CartWidget = () => {
   return (
-    <div>
-        <span>2</span>
-        <FaCartPlus />
-    </div>
-  )
-}
+    <Link to="/cart">
+      <Badge badgeContent={0} showZero color="primary">
+        <BsFillCartCheckFill size="30px" color="beige" />
+      </Badge>
+    </Link>
+  );
+};
 
-export default CartWidget
+export default CartWidget;
