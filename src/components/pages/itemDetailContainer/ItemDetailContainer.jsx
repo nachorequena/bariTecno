@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import { getProducts } from "../../../ProductsMock";
+import { useContext, useEffect, useState } from "react";
+import { getProduct } from "../../../ProductsMock";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
+import { CartContext } from "../../../context/cartContext";
 
 export const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -10,8 +11,10 @@ export const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { addToCart } = useContext(CartContext);
+
   useEffect(() => {
-    getProducts(+id).then((resp) => {
+    getProduct(+id).then((resp) => {
       setItem(resp);
       setIsLoading(false);
     });
@@ -22,7 +25,7 @@ export const ItemDetailContainer = () => {
       ...item,
       quantity: cantidad,
     };
-    console.log(infoProducto);
+    addToCart(infoProducto);
   };
 
   return (

@@ -1,7 +1,7 @@
 export const Checkout = ({ envioDeFormulario, capturar }) => {
   return (
     <div>
-      <h1>Aca va el checkout</h1>
+      <h1>checkout</h1>
 
       <form onSubmit={envioDeFormulario}>
         <input

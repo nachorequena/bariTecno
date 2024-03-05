@@ -7,6 +7,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+
 export const ProductCard = ({ img, title, description, price, id }) => {
   return (
     <Card sx={{ width: 345, height: 350, backgroundColor: "white" }}>

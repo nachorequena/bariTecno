@@ -2,7 +2,7 @@ import { useState } from "react";
 import ItemCount from "./ItemCount";
 
 const ItemCountContainer = ({ stock, onAdd }) => {
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(0);
 
   const addOne = () => {
     if (counter < stock) {
