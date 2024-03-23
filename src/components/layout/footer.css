@@ -1,0 +1,13 @@
+footer {
+  text-align: center;
+  background-color: black;
+  margin-top: 2rem;
+
+  height: auto;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}

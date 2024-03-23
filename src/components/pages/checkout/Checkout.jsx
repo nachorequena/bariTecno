@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
-
+import "./checkout.css";
+import { Button } from "@mui/material";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 export const Checkout = ({ envioDeFormulario, capturar, orderId }) => {
   return (
-    <div>
+    <div className="containerCheckout">
       {orderId ? (
         <div>
-          <h1>Gracias por tu compra, tu numero de seguimiento es {orderId} </h1>
+          <h1>Gracias por tu compra, tu numero de seguimiento es:</h1>
+          <div className="numId">
+            <h2>{orderId}</h2>
+            <ContentCopyIcon />
+          </div>
           <Link to="/">
-            <button>Seguir comprando...</button>
+            <Button type="submit" variant="contained">
+              seguir comprando...
+            </Button>
           </Link>
         </div>
       ) : (
@@ -33,7 +41,9 @@ export const Checkout = ({ envioDeFormulario, capturar, orderId }) => {
             name="email"
           />
 
-          <button type="submit">comprar</button>
+          <Button type="submit" variant="contained" color="success">
+            comprar
+          </Button>
         </form>
       )}
     </div>

@@ -10,7 +10,7 @@ import {
 
 export const ProductCard = ({ img, title, description, price, id }) => {
   return (
-    <Card sx={{ width: 345, height: 350, backgroundColor: "white" }}>
+    <Card sx={{ width: 350, height: 400, backgroundColor: "white" }}>
       <CardMedia sx={{ height: 140 }} image={img} title="green iguana" />
       <CardContent sx={{ height: 150 }}>
         <Typography

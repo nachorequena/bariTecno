@@ -1,0 +1,22 @@
+.containerCheckout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.numId {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.numId h2 {
+  color: red;
+}
