@@ -2,7 +2,7 @@ import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { useContext } from "react";
-import { CartContext } from "../../context/cartContext";
+import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
   const { getTotalItems } = useContext(CartContext);
