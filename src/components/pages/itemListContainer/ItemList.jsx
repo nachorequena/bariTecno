@@ -1,5 +1,6 @@
 import { ProductCard } from "../../common/ProductCard";
 import "./ItemListContainer.css";
+
 const ItemList = ({ products }) => {
   return (
     <div className="cards-container">
