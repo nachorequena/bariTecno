@@ -7,11 +7,16 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import WhatsAppButton from "./whatsappButton";
 
 export const ProductCard = ({ img, title, description, price, id }) => {
   return (
     <Card sx={{ width: 350, height: 400, backgroundColor: "white" }}>
-      <CardMedia sx={{ height: 140 }} image={img} title="green iguana" />
+      <CardMedia
+        sx={{ height: 140, objectFit: "cover" }}
+        image={img}
+        title="green iguana"
+      />
       <CardContent sx={{ height: 150 }}>
         <Typography
           gutterBottom
@@ -32,12 +37,13 @@ export const ProductCard = ({ img, title, description, price, id }) => {
         <Link to={`/item/${id}`}>
           <Button
             variant="contained"
-            size="small"
+            size="medium"
             sx={{ textTransform: "none" }}
           >
             Ver detalle
           </Button>
         </Link>
+        <WhatsAppButton />
       </CardActions>
     </Card>
   );

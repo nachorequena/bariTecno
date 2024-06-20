@@ -8,7 +8,7 @@ const ItemList = ({ products }) => {
         return (
           <ProductCard
             key={id}
-            img={img}
+            img={img[0]}
             title={title}
             description={description}
             price={price}

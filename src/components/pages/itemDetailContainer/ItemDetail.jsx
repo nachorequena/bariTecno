@@ -1,14 +1,23 @@
 import ItemCountContainer from "../../common/itemCount/ItemCountContainer";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./ItemDetail.css";
+
 export const ItemDetail = ({ item, onAdd, initial }) => {
   return (
     <div>
-      <div className={"containerItemDetail"}>
-        <div className={"containerImage"}>
-          <img src={item.img} alt="" />
+      <div className="containerItemDetail">
+        <div className="containerImage">
+          <Carousel showArrows={true}>
+            {item.img.map((image, index) => (
+              <div key={index}>
+                <img src={image} alt={`Producto ${index}`} />
+              </div>
+            ))}
+          </Carousel>
         </div>
 
-        <div className={"containerDetail"}>
+        <div className="containerDetail">
           <h2 style={{ fontFamily: "monospace" }}>
             <span style={{ fontSize: "23px" }}>Nombre:</span> {item.title}
           </h2>
