@@ -14,4 +14,9 @@ export const menuNavigation = [
     text: "relojes",
     path: "/category/relojes",
   },
+  {
+    id: "varios",
+    text: "varios",
+    path: "/category/varios",
+  },
 ];

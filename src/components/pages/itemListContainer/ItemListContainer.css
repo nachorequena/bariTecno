@@ -1,17 +1,29 @@
+/* /src/components/ItemList/ItemListContainer.css */
+
 .cards-container {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 2rem;
-  width: 100%;
   display: flex;
-  align-items: center;
-  gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
   padding: 20px;
-  min-height: 100vh;
+  background-color: #f5f5f5; /* Fondo suave para el contenedor */
 }
 
-.cards-container img {
-  max-width: 200px;
+.product-card {
+  border-radius: 10px; /* Bordes redondeados para las tarjetas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para las tarjetas */
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto; /* Asegura que las imágenes se ajusten correctamente */
+}
+
+.product-card h5 {
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  margin: 0.25rem 0;
 }

@@ -1,3 +1,4 @@
+// /src/components/common/ProductCard.jsx
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -7,17 +8,17 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import WhatsAppButton from "./whatsappButton";
+import WhatsAppButton from "./WhatsAppButton";
 
 export const ProductCard = ({ img, title, description, price, id }) => {
   return (
-    <Card sx={{ width: 350, height: 400, backgroundColor: "white" }}>
+    <Card sx={{ width: 350, height: 450, backgroundColor: "white", margin: 2 }}>
       <CardMedia
-        sx={{ height: 140, objectFit: "cover" }}
+        sx={{ height: 140, objectFit: "contain" }} // Ajustado para contener la imagen
         image={img}
-        title="green iguana"
+        title={title}
       />
-      <CardContent sx={{ height: 150 }}>
+      <CardContent>
         <Typography
           gutterBottom
           variant="h5"
@@ -26,15 +27,15 @@ export const ProductCard = ({ img, title, description, price, id }) => {
         >
           {title}
         </Typography>
-        <Typography variant="h6" color="text.secondary" textAlign={"center"}>
+        <Typography variant="body2" color="text.secondary" textAlign={"center"}>
           {description}
         </Typography>
-        <Typography variant="subtitle1" textAlign={"center"}>
+        <Typography variant="h6" textAlign={"center"} marginTop={1}>
           ${price}.-
         </Typography>
       </CardContent>
       <CardActions style={{ display: "flex", justifyContent: "center" }}>
-        <Link to={`/item/${id}`}>
+        <Link to={`/item/${id}`} style={{ textDecoration: "none" }}>
           <Button
             variant="contained"
             size="medium"
@@ -48,3 +49,5 @@ export const ProductCard = ({ img, title, description, price, id }) => {
     </Card>
   );
 };
+
+export default ProductCard;

@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 import Swal from "sweetalert2";
 import "./cart.css";
