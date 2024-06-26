@@ -1,39 +1,33 @@
-.containerNavbar {
-  display: flex;
-  justify-content: space-around;
-  background-color: black;
-  align-items: center;
+/* Navbar.css */
+.appBar {
+  background-color: #000000e5; /* Color azul del logo */
 }
 
-a {
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navLink {
   text-decoration: none;
   color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
-li {
-  list-style: none;
+  margin: 0 10px;
+  text-transform: uppercase;
 }
 
-.categories {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.categories a {
-  padding: 10px 20px;
-  color: #fafafa;
-  width: 120px;
-  display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  align-items: center;
-  text-align: center;
-}
-.categories a:hover {
-  color: blue;
+.navLink:hover {
+  background-color: #1b1b1ae8;
 }
 
-img {
-  max-width: 150px;
+.drawerList {
+  width: 250px;
+}
+
+.drawerLink {
+  text-decoration: none;
+  color: black;
+}
+
+.drawerLink:hover {
+  color: #002984;
 }

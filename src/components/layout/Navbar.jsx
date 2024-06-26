@@ -35,56 +35,71 @@ export const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar position="static" className="appBar" sx={{ bgcolor: "#A6A6A6" }}>
+        <Toolbar className="toolBar">
           {isMobile && (
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Link to="/">
-            <img
-              src="https://res.cloudinary.com/dq5eikj1o/image/upload/v1711177381/149555709-dise_C3_B1o-de-vectores-de-comercio-electr_C3_B3nico-de-plantilla-de-logotipo-de-carro-de-tecnolog_C3_ADa-vector_mverjx-removebg-preview_ex459h.png"
-              alt="logo"
-              style={{ height: "40px" }}
-            />
-          </Link>
-          <Box sx={{ flexGrow: 1 }} />
-          {!isMobile && (
-            <Box sx={{ display: "flex" }}>
-              {menuNavigation.map(({ id, text, path }) => (
-                <Link
-                  key={id}
-                  to={path}
-                  style={{
-                    textDecoration: "none",
-                    color: "white",
-                    margin: "0 10px",
-                  }}
-                >
-                  <Typography variant="h6">{text}</Typography>
+            <>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box
+                sx={{ display: "flex", justifyContent: "center", flexGrow: 1 }}
+              >
+                <Link to="/">
+                  <img
+                    src="https://res.cloudinary.com/dq5eikj1o/image/upload/v1719033041/logo-bari-tecno_yc0hin.jpg"
+                    alt="logo"
+                    style={{ height: "70px" }}
+                  />
                 </Link>
-              ))}
-            </Box>
+              </Box>
+              <Box sx={{ flexGrow: 1 }} />
+            </>
+          )}
+          {!isMobile && (
+            <>
+              <Link to="/">
+                <img
+                  src="https://res.cloudinary.com/dq5eikj1o/image/upload/v1719033041/logo-bari-tecno_yc0hin.jpg"
+                  alt="logo"
+                  style={{ height: "70px" }}
+                />
+              </Link>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: "flex" }}>
+                {menuNavigation.map(({ id, text, path }) => (
+                  <Link key={id} to={path} className="navLink">
+                    <Typography variant="h6">{text}</Typography>
+                  </Link>
+                ))}
+              </Box>
+            </>
           )}
           <CartWidget />
         </Toolbar>
       </AppBar>
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
-          sx={{ width: 250 }}
+          className="drawerList"
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
           <List>
             {menuNavigation.map(({ id, text, path }) => (
-              <ListItem button key={id} component={Link} to={path}>
+              <ListItem
+                button
+                key={id}
+                component={Link}
+                to={path}
+                className="drawerLink"
+              >
                 <ListItemText primary={text} />
               </ListItem>
             ))}

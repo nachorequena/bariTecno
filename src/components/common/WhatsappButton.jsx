@@ -1,7 +1,7 @@
 import { Button, Link } from "@mui/material";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "3404537574";
+  const phoneNumber = "5493404537574";
   const message = "Hola, estoy interesado en..";
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message

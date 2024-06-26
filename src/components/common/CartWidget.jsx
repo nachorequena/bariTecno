@@ -11,7 +11,7 @@ const CartWidget = () => {
   return (
     <Link to="/cart">
       <Badge badgeContent={total} showZero color="primary">
-        <BsFillCartCheckFill size="30px" color="beige" />
+        <BsFillCartCheckFill size="30px" color="#fafafa" />
       </Badge>
     </Link>
   );

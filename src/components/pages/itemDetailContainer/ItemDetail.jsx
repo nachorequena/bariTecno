@@ -18,27 +18,19 @@ export const ItemDetail = ({ item, onAdd, initial }) => {
         </div>
 
         <div className="containerDetail">
-          <h2 style={{ fontFamily: "monospace" }}>
-            <span style={{ fontSize: "23px" }}>Nombre:</span> {item.title}
-          </h2>
-          <h2 style={{ fontFamily: "monospace" }}>
-            <span style={{ fontSize: "23px" }}>Descripcion:</span>{" "}
-            {item.description}
-          </h2>
-          <h2 style={{ fontFamily: "monospace" }}>
-            <span style={{ fontSize: "23px" }}>Precio:</span> ${item.price}.-
-          </h2>
+          <h1>{item.title}</h1>
+          <h2>${item.price}</h2>
+          <h3>{item.description}</h3>
         </div>
-      </div>
 
-      {initial && <h3>ya tienes {initial} unidades en el carrito </h3>}
-
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <ItemCountContainer
-          stock={item.stock}
-          onAdd={onAdd}
-          initial={initial}
-        />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <ItemCountContainer
+            stock={item.stock}
+            onAdd={onAdd}
+            initial={initial}
+          />
+        </div>
+        {initial && <h4>cantidad de unidades en el carrito: {initial} </h4>}
       </div>
     </div>
   );

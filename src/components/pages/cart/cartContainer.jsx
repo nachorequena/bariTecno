@@ -44,7 +44,7 @@ export const CartContainer = () => {
       cancelButtonText: "No, cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        const phoneNumber = "3404645020"; // Número de teléfono de destino (sin el símbolo + y con el código de país)
+        const phoneNumber = "5493404537574";
         const message = `Hola, quiero realizar el siguiente pedido:\n\n${cart
           .map(
             (item, index) =>
@@ -63,12 +63,8 @@ export const CartContainer = () => {
   return (
     <div className="cartContainer">
       {cart.map((product) => (
-        <div
-          key={product.id}
-          style={{ border: "2px solid black" }}
-          className="cardCart"
-        >
-          <img src={product.img} alt="" />
+        <div key={product.id} className="cardCart">
+          <img src={product.img[0]} alt={product.title} />
           <h2>Nombre: {product.title}</h2>
           <h2>Cantidad: {product.quantity}</h2>
           <button onClick={() => removeById(product.id)}>Eliminar</button>
