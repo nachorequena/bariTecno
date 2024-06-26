@@ -35,7 +35,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" className="appBar" sx={{ bgcolor: "#A6A6A6" }}>
+      <AppBar position="fixed" className="appBar" sx={{ bgcolor: "#A6A6A6" }}>
         <Toolbar className="toolBar">
           {isMobile && (
             <>

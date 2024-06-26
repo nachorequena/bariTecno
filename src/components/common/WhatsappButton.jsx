@@ -1,19 +1,26 @@
-import { Button, Link } from "@mui/material";
+import "./WhatsappButton.css";
 
-const WhatsAppButton = () => {
-  const phoneNumber = "5493404537574";
-  const message = "Hola, estoy interesado en..";
-  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+const WhatsappButton = () => {
+  const phoneNumber = "YOUR_PHONE_NUMBER"; // Reemplaza con tu número de teléfono de WhatsApp
+  const message = "Hola, me gustaría obtener más información!"; // Mensaje predefinido
+
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
   )}`;
 
   return (
-    <Link href={url} underline="none" target="_blank" rel="noopener noreferrer">
-      <Button variant="contained" size="medium" sx={{ textTransform: "none" }}>
-        Comprar
-      </Button>
-    </Link>
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whatsapp-button"
+    >
+      <img
+        src="https://res.cloudinary.com/dq5eikj1o/image/upload/v1719420132/logo_whatsapp_wqqw5x.png"
+        alt="WhatsApp"
+      />
+    </a>
   );
 };
 
-export default WhatsAppButton;
+export default WhatsappButton;
