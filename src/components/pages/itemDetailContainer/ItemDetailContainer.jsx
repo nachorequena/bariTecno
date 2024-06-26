@@ -5,6 +5,7 @@ import { CartContext } from "../../../context/CartContext";
 import { dataBase } from "../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -45,7 +46,15 @@ export const ItemDetailContainer = () => {
   return (
     <>
       {isLoading ? (
-        <h2>Cargando producto...</h2>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <PulseLoader color="#36d7b7" />
+        </div>
       ) : (
         <ItemDetail item={item} onAdd={onAdd} initial={initial} />
       )}

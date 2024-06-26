@@ -34,7 +34,17 @@ const ItemListContainer = () => {
   }, [category]);
 
   if (isLoading) {
-    return <BounceLoader color="#36d7b7" />;
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <BounceLoader color="#36d7b7" />
+      </div>
+    );
   }
 
   return (
