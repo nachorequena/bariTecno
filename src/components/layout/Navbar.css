@@ -1,6 +1,5 @@
-/* Navbar.css */
 .appBar {
-  background-color: #000000e5; /* Color azul del logo */
+  background-color: #000000e5;
 }
 
 .toolBar {
@@ -16,7 +15,7 @@
 }
 
 .navLink:hover {
-  background-color: #1b1b1ae8;
+  color: #1b1b1ae8;
 }
 
 .drawerList {

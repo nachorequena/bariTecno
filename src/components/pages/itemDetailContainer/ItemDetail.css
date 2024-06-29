@@ -5,6 +5,7 @@
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 4rem;
 }
 
 .containerImage {
@@ -15,6 +16,7 @@
 .containerDetail {
   flex: 1;
   min-width: 300px;
+  margin-top: auto;
 }
 
 .containerDetail h2 {
@@ -38,6 +40,6 @@
   }
 
   .containerImage {
-    max-width: 100%;
+    max-width: 70%;
   }
 }

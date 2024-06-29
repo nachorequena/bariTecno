@@ -9,6 +9,7 @@ import {
   ListItemText,
   Typography,
   Box,
+  Divider,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CartWidget from "../common/CartWidget";
@@ -17,6 +18,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import "./Navbar.css";
 import { useState } from "react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -35,9 +37,15 @@ export const Navbar = () => {
 
   return (
     <>
-      <AppBar position="fixed" className="appBar" sx={{ bgcolor: "#A6A6A6" }}>
+      <AppBar
+        position="fixed"
+        className="appBar"
+        sx={{
+          bgcolor: "#A6A6A6",
+        }}
+      >
         <Toolbar className="toolBar">
-          {isMobile && (
+          {isMobile ? (
             <>
               <IconButton
                 edge="start"
@@ -61,8 +69,7 @@ export const Navbar = () => {
               </Box>
               <Box sx={{ flexGrow: 1 }} />
             </>
-          )}
-          {!isMobile && (
+          ) : (
             <>
               <Link to="/">
                 <img
@@ -72,16 +79,28 @@ export const Navbar = () => {
                 />
               </Link>
               <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: "flex" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexGrow: 1,
+                }}
+              >
                 {menuNavigation.map(({ id, text, path }) => (
                   <Link key={id} to={path} className="navLink">
                     <Typography variant="h6">{text}</Typography>
                   </Link>
                 ))}
               </Box>
+              <Link to="/auth" className="navLink">
+                <AccountCircleIcon />
+              </Link>
             </>
           )}
-          <CartWidget />
+
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <CartWidget />
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
@@ -103,6 +122,15 @@ export const Navbar = () => {
                 <ListItemText primary={text} />
               </ListItem>
             ))}
+            <Divider />
+            <ListItem
+              to="/auth"
+              className="drawerLink"
+              component={Link}
+              key={"auth"}
+            >
+              <ListItemText primary="Iniciar sesión" />
+            </ListItem>
           </List>
         </Box>
       </Drawer>
