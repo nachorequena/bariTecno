@@ -2,6 +2,7 @@ import Auth from "../components/pages/Auth";
 import { CartContainer } from "../components/pages/cart/cartContainer";
 import { ItemDetailContainer } from "../components/pages/itemDetailContainer/ItemDetailContainer";
 import ItemListContainer from "../components/pages/itemListContainer/ItemListContainer";
+import ProductEdit from "../components/pages/productEdit";
 
 export const routes = [
   {
@@ -28,5 +29,10 @@ export const routes = [
     id: "auth",
     path: "/auth",
     Element: Auth,
+  },
+  {
+    id: "productEdit",
+    path: "/productEdit",
+    Element: ProductEdit,
   },
 ];

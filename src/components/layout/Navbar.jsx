@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   AppBar,
@@ -16,11 +17,10 @@ import CartWidget from "../common/CartWidget";
 import { menuNavigation } from "../../router/menuNavigation";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import "./Navbar.css";
-import { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import "./Navbar.css";
 
-export const Navbar = () => {
+export const Navbar = ({ userRole }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -91,6 +91,11 @@ export const Navbar = () => {
                     <Typography variant="h6">{text}</Typography>
                   </Link>
                 ))}
+                {userRole === "editor" && (
+                  <Link to="/productEdit" className="navLink">
+                    <Typography variant="h6">Editar productos</Typography>
+                  </Link>
+                )}
               </Box>
               <Link to="/auth" className="navLink">
                 <AccountCircleIcon />
@@ -122,12 +127,23 @@ export const Navbar = () => {
                 <ListItemText primary={text} />
               </ListItem>
             ))}
+            {userRole === "editor" && (
+              <ListItem
+                button
+                key="edit-products"
+                component={Link}
+                to="/productEdit"
+                className="drawerLink"
+              >
+                <ListItemText primary="Editar productos" />
+              </ListItem>
+            )}
             <Divider />
             <ListItem
               to="/auth"
               className="drawerLink"
               component={Link}
-              key={"auth"}
+              key="auth"
             >
               <ListItemText primary="Iniciar sesión" />
             </ListItem>

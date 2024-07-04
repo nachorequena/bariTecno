@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { auth, googleProvider } from "../../firebaseConfig";
+import { useState, useEffect } from "react";
+import { auth, googleProvider, dataBase } from "../../firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import {
   Button,
   TextField,
@@ -17,11 +18,30 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 
-const Auth = () => {
+const Auth = ({ onAuthStateChange }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    const fetchUserRole = async (uid) => {
+      const docRef = doc(dataBase, "users", uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const userRole = docSnap.data().role;
+        setRole(userRole);
+        onAuthStateChange(user, userRole);
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    if (user) {
+      fetchUserRole(user.uid);
+    }
+  }, [user]);
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -76,10 +96,12 @@ const Auth = () => {
     try {
       await signOut(auth);
       setUser(null);
+      setRole("");
+      onAuthStateChange(null, ""); // Clear user and role on sign out
       Swal.fire(
-        "has cerrado sesión",
+        "Cierre de sesión exitoso",
         "Usuario ha cerrado sesión con éxito",
-        "warning"
+        "success"
       );
     } catch (error) {
       console.error("Error durante el cierre de sesión", error);
@@ -99,7 +121,7 @@ const Auth = () => {
           }}
         >
           <Typography component="h1" variant="h5">
-            Usuario ha iniciado sesión
+            Usuario ha iniciado sesión {role && `(Rol: ${role})`}
           </Typography>
           <Button
             fullWidth
@@ -119,7 +141,7 @@ const Auth = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5" sx={{ marginTop: 2 }}>
+          <Typography component="h1" variant="h5">
             {isRegister ? "Registro" : "Iniciar sesión"}
           </Typography>
           <Box component="form" onSubmit={handleAuth} sx={{ mt: 1 }}>
@@ -161,11 +183,10 @@ const Auth = () => {
                   fullWidth
                   variant="outlined"
                   onClick={handleGoogleAuth}
-                  sx={{ borderRadius: 4 }}
                   startIcon={
                     <img
                       src="https://res.cloudinary.com/dq5eikj1o/image/upload/v1719624151/logo_google_h7sqns.png"
-                      alt="logo de Google"
+                      alt="Logo de Google"
                       style={{ width: 20, height: 20 }}
                     />
                   }
@@ -181,7 +202,9 @@ const Auth = () => {
                   variant="body2"
                   onClick={() => setIsRegister(!isRegister)}
                 >
-                  {isRegister ? "Iniciar sesión" : "Registrarse"}
+                  {isRegister
+                    ? "Cambiar a Iniciar sesión"
+                    : "Cambiar a Registro"}
                 </Link>
               </Grid>
             </Grid>
